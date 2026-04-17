@@ -1,6 +1,6 @@
 import { Input, Box } from "@chakra-ui/react";
 import { Search } from "lucide-react";
-import React, { useRef } from "react";
+import { useRef } from "react";
 
 interface Props {
   onSearch: (searchText: string) => void;

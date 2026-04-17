@@ -2,7 +2,6 @@
 
 import { Button, Menu } from "@chakra-ui/react";
 import { ChevronDown } from "lucide-react";
-import React from "react";
 
 interface Props {
   onSelectSortOrder: ( sortOrder:string ) => void;

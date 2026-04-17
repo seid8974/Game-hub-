@@ -1,7 +1,4 @@
-import apiClient from "@/services/api-client";
-import { CanceledError } from "axios";
-import { use, useEffect, useState } from "react";
-import useData from "./useData";
+
 
 import genres from '../data/genres.ts';
 
