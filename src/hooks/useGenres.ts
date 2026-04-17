@@ -3,6 +3,8 @@ import { CanceledError } from "axios";
 import { use, useEffect, useState } from "react";
 import useData from "./useData";
 
+import genres from '../data/genres.ts';
+
 export interface Genre {
   id: number;
   name: string;
@@ -14,7 +16,8 @@ export interface Genre {
 //   results: Genre[];
 // }
 
-const useGenres = () => useData<Genre>("/genres");
+// const useGenres = () => useData<Genre>("/genres");
+const useGenres = () =>({ data: genres, isLoading: false, error: null });
 
 
 

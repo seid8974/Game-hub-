@@ -6,12 +6,13 @@ import {
   ListItem,
   Image,
   Spinner,
-  Button
+  Button,
+  Heading,
+  Text,
 } from "@chakra-ui/react";
 
-
 interface Props {
-  onselectGenre: (genre: Genre ) => void;
+  onselectGenre: (genre: Genre) => void;
   selectedGenre: Genre | null;
 }
 
@@ -23,22 +24,38 @@ const GenreList = ({ onselectGenre, selectedGenre }: Props) => {
   if (isLoading) return <Spinner display="block" mx="auto" />;
 
   return (
-    <List.Root>
-      {data.map((genre) => (
-        <ListItem key={genre.id} padding={2}>
-          <HStack>
-            <Image
-              boxSize="32px"
-              borderRadius={8}
-              src={getCroppedImageUrl(genre.image_background)}
-            />
-            <Button fontWeight={genre.id === selectedGenre?.id ? "bold" : "normal"} fontSize={"lg"} variant="plain" _hover={{ textDecoration: "underline" }} onClick={ () => onselectGenre(genre)} >
-              {genre.name}
-            </Button>
-          </HStack>
-        </ListItem>
-      ))}
-    </List.Root>
+    <>
+      <Heading paddingLeft={4} fontSize={"2xl"} marginBottom={3}>
+        Genres
+      </Heading>
+
+      <List.Root>
+        {data.map((genre) => (
+          <ListItem key={genre.id} paddingY='4px' paddingX={3}>
+            <HStack>
+              <Image
+                boxSize="32px"
+                borderRadius={8}
+                objectFit="cover"
+                src={getCroppedImageUrl(genre.image_background) ?? undefined}
+                alt={genre.name}
+              />
+              <Text
+                whiteSpace="normal"
+                fontWeight={genre.id === selectedGenre?.id ? "bold" : "normal"}
+                fontSize={"lg"}
+                cursor="pointer"
+                // textAlign="left"
+                _hover={{ textDecoration: "underline" }}
+                onClick={() => onselectGenre(genre)}
+              >
+                {genre.name}
+              </Text>
+            </HStack>
+          </ListItem>
+        ))}
+      </List.Root>
+    </>
   );
 };
 
